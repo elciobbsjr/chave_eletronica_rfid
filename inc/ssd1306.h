@@ -15,3 +15,8 @@ extern void ssd1306_config(ssd1306_t *ssd);
 extern void ssd1306_init_bm(ssd1306_t *ssd, uint8_t width, uint8_t height, bool external_vcc, uint8_t address, i2c_inst_t *i2c);
 extern void ssd1306_send_data(ssd1306_t *ssd);
 extern void ssd1306_draw_bitmap(ssd1306_t *ssd, const uint8_t *bitmap);
+
+//adc
+
+void ssd1306_clear(ssd1306_t *oled);
+void ssd1306_show(ssd1306_t *oled);

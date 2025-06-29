@@ -243,3 +243,20 @@ void ssd1306_draw_bitmap(ssd1306_t *ssd, const uint8_t *bitmap) {
         ssd1306_send_data(ssd);
     }
 }
+
+//adc
+void ssd1306_clear(ssd1306_t *oled) {
+    if (!oled) return;
+    memset(oled->ram_buffer + 1, 0, oled->bufsize - 1);
+}
+
+void ssd1306_show(ssd1306_t *oled) {
+    if (!oled) return;
+    ssd1306_command(oled, ssd1306_set_column_address);
+    ssd1306_command(oled, 0);
+    ssd1306_command(oled, oled->width - 1);
+    ssd1306_command(oled, ssd1306_set_page_address);
+    ssd1306_command(oled, 0);
+    ssd1306_command(oled, (oled->height / 8) - 1);
+    ssd1306_send_data(oled);
+}

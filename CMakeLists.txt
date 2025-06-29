@@ -35,6 +35,7 @@ pico_sdk_init()
 add_executable(chave_eletronica_rfid
     chave_eletronica_rfid.c
     mfrc522.c
+    inc/ssd1306_i2c.c
 )
 
 # Nome e versão
@@ -48,6 +49,7 @@ pico_enable_stdio_usb(chave_eletronica_rfid 1)
 # Includes para o projeto
 target_include_directories(chave_eletronica_rfid PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}/inc
 )
 
 # Linka com bibliotecas padrão
@@ -55,6 +57,7 @@ target_link_libraries(chave_eletronica_rfid
     pico_stdlib
     hardware_pwm
     hardware_spi
+    hardware_i2c
 )
 
 # Geração de UF2, bin e map
