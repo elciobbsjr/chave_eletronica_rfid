@@ -35,6 +35,8 @@ pico_sdk_init()
 add_executable(chave_eletronica_rfid
     chave_eletronica_rfid.c
     mfrc522.c
+    leitor_rfid.c
+    display_oled.c
     inc/ssd1306_i2c.c
 )
 
