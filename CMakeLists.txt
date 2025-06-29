@@ -31,12 +31,12 @@ project(chave_eletronica_rfid C CXX ASM)
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
-# Adiciona o executável principal
+# Adiciona o executável principal com arquivos organizados
 add_executable(chave_eletronica_rfid
-    chave_eletronica_rfid.c
-    mfrc522.c
-    leitor_rfid.c
-    display_oled.c
+    src/main/chave_eletronica_rfid.c
+    src/display/display_oled.c
+    src/rfid/leitor_rfid.c
+    src/lib/mfrc522.c
     inc/ssd1306_i2c.c
 )
 
@@ -50,7 +50,10 @@ pico_enable_stdio_usb(chave_eletronica_rfid 1)
 
 # Includes para o projeto
 target_include_directories(chave_eletronica_rfid PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}/src/display
+    ${CMAKE_CURRENT_LIST_DIR}/src/rfid
+    ${CMAKE_CURRENT_LIST_DIR}/src/lib
+    ${CMAKE_CURRENT_LIST_DIR}/src/main
     ${CMAKE_CURRENT_LIST_DIR}/inc
 )
 
